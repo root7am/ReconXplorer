@@ -1,4 +1,4 @@
-# ReconXplorer: A Comprehensive Reconnaissance and Automation Tool
+# ReconXplorer 👁 : A Comprehensive Reconnaissance and Automation Tool
 
 **ReconXplorer** is an all-in-one toolkit designed for cybersecurity professionals, OSINT (Open Source Intelligence) practitioners, and advanced Discord users. It provides an extensive range of features that streamline information gathering, enhance security operations, and automate various tasks within the Discord ecosystem. Whether you are performing a deep dive into OSINT investigations, managing Discord tokens, or automating proxy scrapping, ReconXplorer has the tools you need.
 
