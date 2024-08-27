@@ -21,6 +21,8 @@ from instagram_user_info import main as instagram_user_info_main
 from number_info import main as number_info_main 
 from auto_login import main as auto_login_main
 from token_generator import main as token_generator_main 
+from website_info import main as website_info_main
+from token_massdm import execute_mass_dm 
 
 class colors:
     red = '[38;2;255;0;0m'
@@ -33,7 +35,6 @@ class colors:
     white = '[38;2;255;255;255m'
     gray = '[38;2;200;200;200m'
     light_gray = '[38;2;150;150;150m'
-
 
 watermark = '''
  ____                     __  __      _                     
@@ -66,23 +67,23 @@ def display_menu():
     print(f"|  _ \\ ___  ___ ___  _ __ \\ \\/ /_ __ | | ___  _ __ ___ _ __ ")
     print(f"| |_) / _ \\/ __/ _ \\| '_ \\ \\  /| '_ \\| |/ _ \\| '__/ _ \\ '__|")
     print(f"|  _ <  __/ (_| (_) | | | |/  \\| |_) | | (_) | | |  __/ |   ")
-    print(f"|_| \\_\\___|\\___\\___/|_| |_/_/\\_\\ .__/|_|\\___/|_|  \\___|_|   ")
+    print(f"|_| \\_\\___|\\___\\___/|_| |_/_/\\_\\ .__/|_|\___/|_|  \\___|_|   ")
     print(f"                               |_|                           ")
     print("            Developers : @6AM & @7AM | discord.gg/brifr")
     print("")
     print(f"{Colors.purple}─────────────────────────────────────────────────────────────────────────────────────────────────────{Colors.reset}")
-    print(f"{Colors.purple}[1]{Colors.reset} {Colors.white}- IP Info{Colors.reset} {Colors.purple}(Osint){Colors.reset}                                     {Colors.purple}[11]{Colors.reset} {Colors.white}- Scrapper Proxy{Colors.reset} {Colors.purple}(Scrapper){Colors.reset}")         
-    print(f"{Colors.purple}[2]{Colors.reset} {Colors.white}- Get IP{Colors.reset} {Colors.purple}(Other){Colors.reset}                                      {Colors.purple}[12]{Colors.reset} {Colors.white}- Email Info{Colors.reset} {Colors.purple}(Osint){Colors.reset}")
-    print(f"{Colors.purple}[3]{Colors.reset} {Colors.white}- Token Decrypt{Colors.reset} {Colors.purple}(Discord){Colors.reset}                             {Colors.purple}[13]{Colors.reset} {Colors.white}- Instagram User Info{Colors.reset} {Colors.purple}(Osint){Colors.reset}")
-    print(f"{Colors.purple}[4]{Colors.reset} {Colors.white}- Token Checker{Colors.reset} {Colors.purple}(Discord){Colors.reset}                             {Colors.purple}[14]{Colors.reset} {Colors.white}- Number Info{Colors.reset} {Colors.purple}(Osint){Colors.reset}")                           
-    print(f"{Colors.purple}[5]{Colors.reset} {Colors.white}- Token Info{Colors.reset} {Colors.purple}(Discord){Colors.reset}                                {Colors.purple}[15]{Colors.reset} {Colors.white}- Auto Login{Colors.reset} {Colors.purple}(Discord){Colors.reset}")                              
-    print(f"{Colors.purple}[6]{Colors.reset} {Colors.white}- Badge Changer{Colors.reset} {Colors.purple}(Discord){Colors.reset}                             {Colors.purple}[16]{Colors.reset} {Colors.white}- Token Generator{Colors.reset} {Colors.purple}(Generator){Colors.reset}")
-    print(f"{Colors.purple}[7]{Colors.reset} {Colors.white}- Status Rotator{Colors.reset} {Colors.purple}(Discord){Colors.reset}                            {Colors.purple}[17]{Colors.reset} {Colors.white}- Discord Massreport{Colors.reset} {Colors.purple}(Discord){Colors.reset}")
-    print(f"{Colors.purple}[8]{Colors.reset} {Colors.white}- Server Info{Colors.reset} {Colors.purple}(Discord){Colors.reset}")
-    print(f"{Colors.purple}[9]{Colors.reset} {Colors.white}- Webhook Info{Colors.reset} {Colors.purple}(Discord){Colors.reset}")
-    print(f"{Colors.purple}[10]{Colors.reset} {Colors.white}- Webhook Spammer{Colors.reset} {Colors.purple}(Discord){Colors.reset}")
+    print(f"{Colors.purple}[1]{Colors.reset} - IP Info{Colors.reset} {Colors.purple}(Osint){Colors.reset}                                     {Colors.purple}[11]{Colors.reset} - Scrapper Proxy {Colors.purple}(Scrapper){Colors.reset}")         
+    print(f"{Colors.purple}[2]{Colors.reset} - Get IP{Colors.reset} {Colors.purple}(Other){Colors.reset}                                      {Colors.purple}[12]{Colors.reset} - Email Info {Colors.purple}(Osint){Colors.reset}")
+    print(f"{Colors.purple}[3]{Colors.reset} - Token Decrypt{Colors.reset} {Colors.purple}(Discord){Colors.reset}                             {Colors.purple}[13]{Colors.reset} - Instagram User Info {Colors.purple}(Osint){Colors.reset}")
+    print(f"{Colors.purple}[4]{Colors.reset} - Token Checker{Colors.reset} {Colors.purple}(Discord){Colors.reset}                             {Colors.purple}[14]{Colors.reset} - Number Info {Colors.purple}(Osint){Colors.reset}")                           
+    print(f"{Colors.purple}[5]{Colors.reset} - Token Info{Colors.reset} {Colors.purple}(Discord){Colors.reset}                                {Colors.purple}[15]{Colors.reset} - Auto Login {Colors.purple}(Discord){Colors.reset}")                              
+    print(f"{Colors.purple}[6]{Colors.reset} - Badge Changer{Colors.reset} {Colors.purple}(Discord){Colors.reset}                             {Colors.purple}[16]{Colors.reset} - Token Generator {Colors.purple}(Generator){Colors.reset}")
+    print(f"{Colors.purple}[7]{Colors.reset} - Status Rotator{Colors.reset} {Colors.purple}(Discord){Colors.reset}                            {Colors.purple}[17]{Colors.reset} - Discord Massreport {Colors.purple}(Discord){Colors.reset}")
+    print(f"{Colors.purple}[8]{Colors.reset} - Server Info{Colors.reset} {Colors.purple}(Discord){Colors.reset}                               {Colors.purple}[18]{Colors.reset} - Website Info {Colors.purple}(Osint){Colors.reset}")
+    print(f"{Colors.purple}[9]{Colors.reset} - Webhook Info{Colors.reset} {Colors.purple}(Discord){Colors.reset}                              {Colors.purple}[19]{Colors.reset} - Token Massdm {Colors.purple}(Discord){Colors.reset}")
+    print(f"{Colors.purple}[10]{Colors.reset} - Webhook Spammer{Colors.reset} {Colors.purple}(Discord){Colors.reset}")
     print(f"{Colors.purple}─────────────────────────────────────────────────────────────────────────────────────────────────────{Colors.reset}")
-    print(f"{Colors.purple}[quit]{Colors.reset} {Colors.white}- Quit{Colors.reset}")
+    print(f"{Colors.purple}[quit]{Colors.reset} - Quit{Colors.reset}")
     print("")
 
 def get_pc_name():
@@ -185,6 +186,11 @@ def token_generator():
     token_generator_main()  
     input("\nPress Enter to return to the menu...")
 
+def website_info():
+    clear()
+    website_info_main()  
+    input("\nPress Enter to return to the menu...")
+
 def main():
     while True:
         display_menu()
@@ -224,6 +230,10 @@ def main():
             token_generator() 
         elif choice == '17':
             os.system('python utils/discord_massreport.py')
+        elif choice == '18':
+            website_info()
+        elif choice == '19':
+            execute_mass_dm() 
         elif choice == 'quit':
             print("Exiting...")
             break
