@@ -112,5 +112,5 @@ ReconXplorer stands out because of its versatility and ease of use. It combines 
 
 Ready to explore the full potential of ReconXplorer? Download the tool from our GitHub repository, where you can also find installation guides, tutorials, and community discussions. Whether you're a seasoned professional or just getting started, ReconXplorer offers the tools and resources you need to succeed.
 
-Need Help ? Contact Us !
+Need Help ? Contact Me
 root7am@gmail.com or 7amaskip on Discord
