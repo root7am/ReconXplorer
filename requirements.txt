@@ -1,9 +1,0 @@
-pystyle
-requests
-selenium
-webdriver_manager
-emailrep
-instaloader
-phonenumbers
-httpx
-datetime
