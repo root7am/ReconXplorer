@@ -8,6 +8,8 @@
 
 ReconXplorer integrates a variety of functionalities into a single, user-friendly interface. Below is an in-depth look at each feature and its application:
 
+![recon](https://github.com/user-attachments/assets/0057d571-607a-41b7-b9f1-e5f874d305be)
+
 ### 1. IP Info (OSINT)
 The **IP Info** module allows users to gather comprehensive information about any IP address. This includes geolocation data, ISP details, domain associations, and more. It's a critical tool for reconnaissance during cybersecurity operations or when conducting OSINT research to map out the digital footprint of a target.
 
@@ -29,6 +31,7 @@ The **Token Checker** tool verifies the validity of Discord tokens. It is invalu
 - **Use Case**: Ensure the validity of tokens used in automation scripts or for managing multiple Discord bots, preventing unexpected downtime or security risks.
 
 ### 5. Token Info (Discord)
+
 **Token Info** extracts and presents detailed information from Discord tokens, such as user ID, email (if available), and associated permissions. This allows for quick profiling of tokens, which can be critical during security assessments.
 
 - **Use Case**: Conduct a security review by extracting and analyzing information from tokens, ensuring that no unnecessary permissions are granted.
