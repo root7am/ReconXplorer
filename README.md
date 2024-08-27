@@ -28,6 +28,7 @@ With **Token Decrypt**, users can decrypt Discord tokens to reveal the underlyin
 ### 4. Token Checker (Discord)
 The **Token Checker** tool verifies the validity of Discord tokens. It is invaluable for maintaining the security and integrity of automated systems that rely on Discord bots or for users managing multiple Discord accounts.
 
+
 - **Use Case**: Ensure the validity of tokens used in automation scripts or for managing multiple Discord bots, preventing unexpected downtime or security risks.
 
 ### 5. Token Info (Discord)
@@ -112,6 +113,18 @@ ReconXplorer stands out because of its versatility and ease of use. It combines 
 - **User-Friendly Interface**: Designed with usability in mind, ReconXplorer ensures that even complex tasks can be performed with ease.
 - **Regular Updates**: Stay ahead of the curve with frequent updates that introduce new features and enhance existing ones.
 - **Community Support**: Join a growing community of cybersecurity professionals and OSINT practitioners who share tips, scripts, and support.
+
+  ## How to use ?
+
+![1](https://github.com/user-attachments/assets/abe2ac32-3c73-432f-9912-eca521536648)
+
+ReconXplorer is a tool that helps you gather online information. It has several functions like:
+
+IP Info: Finds details about an IP address.
+Email Info: Looks up information about an email address.
+Instagram User Info: Retrieves data on an Instagram user.
+Think of it as a Swiss Army knife for understanding online activities. For example, you can use it to check where a message is coming from or get information about someone.
+The tool is easy to use: you pick an option from the menu, enter the required info, and it gives you the results.
 
 ## Get Started with ReconXplorer
 
