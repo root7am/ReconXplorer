@@ -97,6 +97,14 @@ The **Token Generator** allows users to create Discord tokens for testing and au
 ### 17. Discord Massreport (Discord)
 The **Discord Massreport** tool automates the process of reporting users on Discord, allowing for multiple reports to be sent in a short period. This tool can be used in moderation efforts or to flag malicious accounts.
 
+### 18. Website Info (Osint)
+
+The **Website info** allows you to scan the IP of a website in order to know its IP and check if it is malicious.
+
+### 19. Token Massdm (Discord)
+
+The **Token massdm** allows you to spam invitations or messages to a discord user.
+
 - **Use Case**: Enhance moderation efforts by automating the reporting of multiple accounts involved in abusive behavior or spam.
 
 ## Potential Applications
