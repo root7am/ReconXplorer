@@ -8,7 +8,7 @@
 
 ReconXplorer integrates a variety of functionalities into a single, user-friendly interface. Below is an in-depth look at each feature and its application:
 
-![2](https://github.com/user-attachments/assets/79e52ad3-b83f-4fab-830d-e085a45de90f)
+![2](https://cdn.discordapp.com/attachments/1171167100623134751/1278396449708834877/image.png?ex=66d0a6f9&is=66cf5579&hm=98a14dba6d43478e21741a38a6d71ffc53c1fbb90466805808e5a47ce19f72f3&)
 
 ### 1. IP Info (OSINT)
 The **IP Info** module allows users to gather comprehensive information about any IP address. This includes geolocation data, ISP details, domain associations, and more. It's a critical tool for reconnaissance during cybersecurity operations or when conducting OSINT research to map out the digital footprint of a target.
