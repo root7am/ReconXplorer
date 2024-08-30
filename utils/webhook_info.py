@@ -5,12 +5,13 @@ from pystyle import Colors
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
 
-def info_webhook(webhook_url):
+def info_webhook():
     headers = {
         'Content-Type': 'application/json',
     }
 
     try:
+        webhook_url = input("Enter Webhook URL: ")
         response = requests.get(webhook_url, headers=headers)
         response.raise_for_status()
         webhook_info = response.json()
@@ -46,5 +47,4 @@ def info_webhook(webhook_url):
 
 if __name__ == "__main__":
     clear()
-    webhook_url = input("Enter Webhook URL: ")
-    info_webhook(webhook_url)
+    info_webhook()
