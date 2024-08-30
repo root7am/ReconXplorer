@@ -8,6 +8,7 @@ def get_ip_info(ip):
         response = requests.get(url)
         response.raise_for_status() 
         data = response.json()
+        print(data)
         return data
     except requests.exceptions.RequestException as e:
         print(f"Erreur lors de la récupération des informations de l'IP: {e}")
