@@ -78,13 +78,13 @@ def display_menu():
     print(f"{Colors.purple}[3]{Colors.reset} - Token Decrypt{Colors.reset} {Colors.purple}(Discord){Colors.reset}                             {Colors.purple}[13]{Colors.reset} - Instagram User Info {Colors.purple}(Osint){Colors.reset}                                   {Colors.purple}[23]{Colors.reset} - TikTok User Info {Colors.purple}(Osint){Colors.reset}")
     print(f"{Colors.purple}[4]{Colors.reset} - Token Checker{Colors.reset} {Colors.purple}(Discord){Colors.reset}                             {Colors.purple}[14]{Colors.reset} - Number Info {Colors.purple}(Osint){Colors.reset}                                           {Colors.purple}[24]{Colors.reset} - Invite Bot To Id {Colors.purple}(Discord){Colors.reset}")                           
     print(f"{Colors.purple}[5]{Colors.reset} - Token Info{Colors.reset} {Colors.purple}(Discord){Colors.reset}                                {Colors.purple}[15]{Colors.reset} - Auto Login {Colors.purple}(Discord){Colors.reset}                                          {Colors.purple}[25]{Colors.reset} - Ip Scanner {Colors.purple}(Osint){Colors.reset}")                              
-    print(f"{Colors.purple}[6]{Colors.reset} - Badge Changer{Colors.reset} {Colors.purple}(Discord){Colors.reset}                             {Colors.purple}[16]{Colors.reset} - Token Generator {Colors.purple}(Generator){Colors.reset}")
-    print(f"{Colors.purple}[7]{Colors.reset} - Status Rotator{Colors.reset} {Colors.purple}(Discord){Colors.reset}                            {Colors.purple}[17]{Colors.reset} - Discord Massreport {Colors.purple}(Discord){Colors.reset}")
-    print(f"{Colors.purple}[8]{Colors.reset} - Server Info{Colors.reset} {Colors.purple}(Discord){Colors.reset}                               {Colors.purple}[18]{Colors.reset} - Website Info {Colors.purple}(Osint){Colors.reset}")
-    print(f"{Colors.purple}[9]{Colors.reset} - Webhook Info{Colors.reset} {Colors.purple}(Discord){Colors.reset}                              {Colors.purple}[19]{Colors.reset} - Token Massdm {Colors.purple}(Discord){Colors.reset}")
-    print(f"{Colors.purple}[10]{Colors.reset} - Webhook Spammer{Colors.reset} {Colors.purple}(Discord){Colors.reset}                          {Colors.purple}[20]{Colors.reset} - Snapchat User Info{Colors.reset} {Colors.purple}(Osint){Colors.reset}")
+    print(f"{Colors.purple}[6]{Colors.reset} - Badge Changer{Colors.reset} {Colors.purple}(Discord){Colors.reset}                             {Colors.purple}[16]{Colors.reset} - Token Generator {Colors.purple}(Generator){Colors.reset}                                   {Colors.purple}[26]{Colors.reset} - Roblox User Info {Colors.purple}(Osint){Colors.reset}")
+    print(f"{Colors.purple}[7]{Colors.reset} - Status Rotator{Colors.reset} {Colors.purple}(Discord){Colors.reset}                            {Colors.purple}[17]{Colors.reset} - Discord Massreport {Colors.purple}(Discord){Colors.reset}                                  {Colors.purple}[27]{Colors.reset} - Telegram User Info {Colors.purple}(Osint){Colors.reset}")
+    print(f"{Colors.purple}[8]{Colors.reset} - Server Info{Colors.reset} {Colors.purple}(Discord){Colors.reset}                               {Colors.purple}[18]{Colors.reset} - Website Info {Colors.purple}(Osint){Colors.reset}                                          {Colors.purple}[28]{Colors.reset} - Discord Id Info {Colors.purple}(Discord){Colors.reset}")
+    print(f"{Colors.purple}[9]{Colors.reset} - Webhook Info{Colors.reset} {Colors.purple}(Discord){Colors.reset}                              {Colors.purple}[19]{Colors.reset} - Token Massdm {Colors.purple}(Discord){Colors.reset}                                        {Colors.purple}[29]{Colors.reset} - Password Generator {Colors.purple}(Generator){Colors.reset}")
+    print(f"{Colors.purple}[10]{Colors.reset} - Webhook Spammer{Colors.reset} {Colors.purple}(Discord){Colors.reset}                          {Colors.purple}[20]{Colors.reset} - Snapchat User Info{Colors.reset} {Colors.purple}(Osint){Colors.reset}                                    {Colors.purple}[30]{Colors.reset} - Search Mcbe (Indisponible){Colors.reset} {Colors.purple}(Osint){Colors.reset}")
     print(f"{Colors.purple}────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────{Colors.reset}")
-    print(f"{Colors.purple}[quit]{Colors.reset} - Quit{Colors.reset}")
+    print(f"{Colors.purple}[quit]{Colors.reset} - Quit{Colors.reset}            {Colors.purple}[<]{Colors.reset} - Retour{Colors.reset}            {Colors.purple}[>]{Colors.reset} - Suivant{Colors.reset}")
     print("")
 
 def get_pc_name():
@@ -121,7 +121,12 @@ handles = [
     lambda: os.system('python utils/steam_user_info.py'),
     tiktok_user_info_main,
     lambda: os.system('python utils/invite_bot_to_id.py'),
-    lambda: os.system('python utils/ip_scanner.py')
+    lambda: os.system('python utils/ip_scanner.py'),
+    lambda: os.system('python utils/roblox_user_info.py'),
+    lambda: os.system('python utils/telegram_user_info.py'),
+    lambda: os.system('python utils/discord_id_info.py'),
+    lambda: os.system('python utils/password_generator.py'),
+    lambda: os.system('python utils/search_mcbe.py')
 ]
 
 def main():
