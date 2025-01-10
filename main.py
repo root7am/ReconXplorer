@@ -70,7 +70,7 @@ def display_menu():
     print(f"|  _ <  __/ (_| (_) | | | |/  \\| |_) | | (_) | | |  __/ |   ")
     print(f"|_| \\_\\___|\\___\\___/|_| |_/_/\\_\\ .__/|_|\___/|_|  \\___|_|   ")
     print(f"                               |_|                           ")
-    print("            Developers : @6AM & @7AM | discord.gg/brifr")
+    print("            Developer : nahura")
     print("")
     print(f"{Colors.purple}────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────{Colors.reset}")
     print(f"{Colors.purple}[1]{Colors.reset} - IP Info{Colors.reset} {Colors.purple}(Osint){Colors.reset}                                     {Colors.purple}[11]{Colors.reset} - Scrapper Proxy {Colors.purple}(Scrapper){Colors.reset}                                     {Colors.purple}[21]{Colors.reset} - Server Info FiveM {Colors.purple}(Osint){Colors.reset}")         
