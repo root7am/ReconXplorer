@@ -88,12 +88,11 @@ def display_menu():
     print("")
 
 def get_pc_name():
-    """Retourne le nom de l'ordinateur"""
     return socket.gethostname()
 
 def prompt_input(prompt_message):
     pc_name = get_pc_name()
-    return input(f"╭─── {pc_name}@ReconXplorer\n│\n╰─$ {prompt_message}")
+    return input(f"╭─── {pc_name}@ReconXplorer V2\n│\n╰─$ {prompt_message}")
 
 handles = [
     None,
@@ -125,7 +124,6 @@ handles = [
     lambda: os.system('python utils/roblox_user_info.py'),
     lambda: os.system('python utils/telegram_user_info.py'),
     lambda: os.system('python utils/discord_id_info.py'),
-    lambda: os.system('python utils/password_generator.py'),
     lambda: os.system('python utils/search_mcbe.py')
 ]
 

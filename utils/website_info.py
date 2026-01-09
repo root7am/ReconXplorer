@@ -5,7 +5,6 @@ from pystyle import Colors
 IPINFO_API_KEY = '66819ffdf72438'
 
 def resolve_ip_from_url(url):
-    """Résoudre une URL en une adresse IP."""
     try:
         ip = socket.gethostbyname(url)
         return ip
@@ -14,7 +13,6 @@ def resolve_ip_from_url(url):
         return None
 
 def get_ipinfo(ip):
-    """Obtenir les informations de IPinfo pour une adresse IP."""
     url = f'https://ipinfo.io/{ip}/json?token={IPINFO_API_KEY}'
     response = requests.get(url)
     
@@ -25,7 +23,6 @@ def get_ipinfo(ip):
         return None
 
 def display_website_info(ip):
-    """Afficher les informations de site Web à partir des données de IPinfo."""
     data = get_ipinfo(ip)
     
     if data:
@@ -39,7 +36,6 @@ def display_website_info(ip):
         print("No information found or failed to retrieve data.")
 
 def main():
-    """Point d'entrée principal pour l'exécution du script."""
     url = input("Enter website URL to get info: ").strip()
     ip = resolve_ip_from_url(url)
     
