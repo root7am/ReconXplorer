@@ -1,152 +1,128 @@
 import os
 import sys
 import socket
-from pystyle import Colors, Cursor, System, Anime, Center, Colorate
+import subprocess
+import time
+import threading
+import re
+from pystyle import Colors, Cursor, System, Colorate
 
-sys.path.append(os.path.join(os.path.dirname(__file__), 'utils'))
 
-from ip_info import get_ip_info
-from get_ip import main as get_ip_main
-from token_decrypt import decrypt_token
-from token_checker import main as token_checker_main
-from token_info import display_discord_info
-from badge_changer import main as badge_changer_main
-from status_rotator import status_changer
-from server_info import server_lookup
-from webhook_info import info_webhook
-from webhook_spammer import webhookspam
-from scrapper_proxy import get_proxies  
-from email_info import main as email_info_main
-from instagram_user_info import main as instagram_user_info_main  
-from number_info import main as number_info_main 
-from auto_login import main as auto_login_main
-from token_generator import main as token_generator_main 
-from website_info import main as website_info_main
-from token_massdm import execute_mass_dm 
-from tiktok_user_info import main as tiktok_user_info_main 
-
-class colors:
-    red = '[38;2;255;0;0m'
-    orange = '[38;2;255;165;0m'
-    green = '[38;2;100;255;100m'
-    black = '[38;2;0;0;0m'
-    pink = '[38;2;255;0;255m'
-    purple = '[38;2;113;41;255m'
-    blue = '[38;2;92;120;255m'
-    white = '[38;2;255;255;255m'
-    gray = '[38;2;200;200;200m'
-    light_gray = '[38;2;150;150;150m'
-
-watermark = '''
- ____                     __  __      _                     
-|  _ \ ___  ___ ___  _ __ \ \/ /_ __ | | ___  _ __ ___ _ __ 
-| |_) / _ \/ __/ _ \| '_ \ \  /| '_ \| |/ _ \| '__/ _ \ '__|
-|  _ <  __/ (_| (_) | | | |/  \| |_) | | (_) | | |  __/ |   
-|_| \_\___|\___\___/|_| |_/_/\_\ .__/|_|\___/|_|  \___|_|   
-                               |_|                          
-                    Press ENTER to continue  
-                            '''
-
-Cursor.HideCursor()
-System.Title('Press ENTER to continue')
-Anime.Fade(Center.Center(watermark), Colors.purple_to_blue, Colorate.Vertical, interval=0.100, enter=True)
-
-Cursor.ShowCursor()
-
-print(watermark
-      .replace('█', colors.purple + '█')
-      .replace('╗', colors.blue + '╗')
-      .replace('║', colors.blue + '║')
-      .replace('╝', colors.blue + '╝')
-      .replace('═', colors.blue + '═')
-      .replace('╔', colors.blue + '╔')
-      + '\n' + colors.white)
-
-def display_menu():
-    os.system('clear' if os.name == 'posix' else 'cls')
-    print(f"{Colors.purple} ____                     __  __      _                     ")
-    print(f"|  _ \\ ___  ___ ___  _ __ \\ \\/ /_ __ | | ___  _ __ ___ _ __ ")
-    print(f"| |_) / _ \\/ __/ _ \\| '_ \\ \\  /| '_ \\| |/ _ \\| '__/ _ \\ '__|")
-    print(f"|  _ <  __/ (_| (_) | | | |/  \\| |_) | | (_) | | |  __/ |   ")
-    print(f"|_| \\_\\___|\\___\\___/|_| |_/_/\\_\\ .__/|_|\___/|_|  \\___|_|   ")
-    print(f"                               |_|                           ")
-    print("            Developers : @6AM & @7AM | discord.gg/brifr")
-    print("")
-    print(f"{Colors.purple}────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────{Colors.reset}")
-    print(f"{Colors.purple}[1]{Colors.reset} - IP Info{Colors.reset} {Colors.purple}(Osint){Colors.reset}                                     {Colors.purple}[11]{Colors.reset} - Scrapper Proxy {Colors.purple}(Scrapper){Colors.reset}                                     {Colors.purple}[21]{Colors.reset} - Server Info FiveM {Colors.purple}(Osint){Colors.reset}")         
-    print(f"{Colors.purple}[2]{Colors.reset} - Get IP{Colors.reset} {Colors.purple}(Other){Colors.reset}                                      {Colors.purple}[12]{Colors.reset} - Email Info {Colors.purple}(Osint){Colors.reset}                                            {Colors.purple}[22]{Colors.reset} - Steam User Info {Colors.purple}(Osint){Colors.reset}")
-    print(f"{Colors.purple}[3]{Colors.reset} - Token Decrypt{Colors.reset} {Colors.purple}(Discord){Colors.reset}                             {Colors.purple}[13]{Colors.reset} - Instagram User Info {Colors.purple}(Osint){Colors.reset}                                   {Colors.purple}[23]{Colors.reset} - TikTok User Info {Colors.purple}(Osint){Colors.reset}")
-    print(f"{Colors.purple}[4]{Colors.reset} - Token Checker{Colors.reset} {Colors.purple}(Discord){Colors.reset}                             {Colors.purple}[14]{Colors.reset} - Number Info {Colors.purple}(Osint){Colors.reset}                                           {Colors.purple}[24]{Colors.reset} - Invite Bot To Id {Colors.purple}(Discord){Colors.reset}")                           
-    print(f"{Colors.purple}[5]{Colors.reset} - Token Info{Colors.reset} {Colors.purple}(Discord){Colors.reset}                                {Colors.purple}[15]{Colors.reset} - Auto Login {Colors.purple}(Discord){Colors.reset}                                          {Colors.purple}[25]{Colors.reset} - Ip Scanner {Colors.purple}(Osint){Colors.reset}")                              
-    print(f"{Colors.purple}[6]{Colors.reset} - Badge Changer{Colors.reset} {Colors.purple}(Discord){Colors.reset}                             {Colors.purple}[16]{Colors.reset} - Token Generator {Colors.purple}(Generator){Colors.reset}                                   {Colors.purple}[26]{Colors.reset} - Roblox User Info {Colors.purple}(Osint){Colors.reset}")
-    print(f"{Colors.purple}[7]{Colors.reset} - Status Rotator{Colors.reset} {Colors.purple}(Discord){Colors.reset}                            {Colors.purple}[17]{Colors.reset} - Discord Massreport {Colors.purple}(Discord){Colors.reset}                                  {Colors.purple}[27]{Colors.reset} - Telegram User Info {Colors.purple}(Osint){Colors.reset}")
-    print(f"{Colors.purple}[8]{Colors.reset} - Server Info{Colors.reset} {Colors.purple}(Discord){Colors.reset}                               {Colors.purple}[18]{Colors.reset} - Website Info {Colors.purple}(Osint){Colors.reset}                                          {Colors.purple}[28]{Colors.reset} - Discord Id Info {Colors.purple}(Discord){Colors.reset}")
-    print(f"{Colors.purple}[9]{Colors.reset} - Webhook Info{Colors.reset} {Colors.purple}(Discord){Colors.reset}                              {Colors.purple}[19]{Colors.reset} - Token Massdm {Colors.purple}(Discord){Colors.reset}                                        {Colors.purple}[29]{Colors.reset} - Password Generator {Colors.purple}(Generator){Colors.reset}")
-    print(f"{Colors.purple}[10]{Colors.reset} - Webhook Spammer{Colors.reset} {Colors.purple}(Discord){Colors.reset}                          {Colors.purple}[20]{Colors.reset} - Snapchat User Info{Colors.reset} {Colors.purple}(Osint){Colors.reset}                                    {Colors.purple}[30]{Colors.reset} - Search Mcbe (Indisponible){Colors.reset} {Colors.purple}(Osint){Colors.reset}")
-    print(f"{Colors.purple}────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────{Colors.reset}")
-    print(f"{Colors.purple}[quit]{Colors.reset} - Quit{Colors.reset}            {Colors.purple}[<]{Colors.reset} - Retour{Colors.reset}            {Colors.purple}[>]{Colors.reset} - Suivant{Colors.reset}")
-    print("")
-
-def get_pc_name():
-    return socket.gethostname()
-
-def prompt_input(prompt_message):
-    pc_name = get_pc_name()
-    return input(f"╭─── {pc_name}@ReconXplorer V2\n│\n╰─$ {prompt_message}")
-
-handles = [
-    None,
-    get_ip_info,
-    get_ip_main,
-    decrypt_token,
-    token_checker_main,
-    display_discord_info,
-    badge_changer_main,
-    status_changer,
-    server_lookup,
-    info_webhook,
-    webhookspam,
-    get_proxies,
-    email_info_main,
-    instagram_user_info_main,
-    number_info_main,
-    auto_login_main,
-    token_generator_main,
-    lambda: os.system('python utils/discord_massreport.py'),
-    website_info_main,
-    execute_mass_dm,
-    lambda: os.system('python utils/snapchat_user_info.py'),
-    lambda: os.system('python utils/server_info_fivem.py'),
-    lambda: os.system('python utils/steam_user_info.py'),
-    tiktok_user_info_main,
-    lambda: os.system('python utils/invite_bot_to_id.py'),
-    lambda: os.system('python utils/ip_scanner.py'),
-    lambda: os.system('python utils/roblox_user_info.py'),
-    lambda: os.system('python utils/telegram_user_info.py'),
-    lambda: os.system('python utils/discord_id_info.py'),
-    lambda: os.system('python utils/search_mcbe.py')
+TOOLS = [
+    ("IP Info", "ip_info"), ("Get IP", "get_ip"), ("Token Decrypt", "token_decrypt"),
+    ("Token Checker", "token_checker"), ("Token Info", "token_generator"), ("Badge Changer", "badge_changer"),
+    ("Status Rotator", "status_rotator"), ("Server Info", "server_info"), ("Webhook Info", "webhook_info"),
+    ("Webhook Spammer", "webhook_spammer"), ("Scrapper Proxy", "scrapper_proxy"), ("Email Info", "email_info"),
+    ("Instagram Info", "instagram_user_info"), ("Number Info", "number_info"), ("Auto Login", "auto_login"),
+    ("Token Gen", "token_generator"), ("Mass Report", "discord_massreport"), ("Website Info", "website_info"),
+    ("Token MassDM", "token_massdm"), ("Snapchat Info", "snapchat_user_info"), ("FiveM Server", "server_info_fivem"),
+    ("Steam Info", "steam_user_info"), ("TikTok Info", "tiktok_user_info"), ("Bot Inviter", "invite_bot_to_id"),
+    ("IP Scanner", "ip_scanner"), ("Roblox Info", "roblox_search"), ("Telegram Info", "telegram_search"),
+    ("Discord ID", "disc_id")
 ]
 
+current_page = 0
+items_per_page = 15
+
+logo = r"""
+ __________                          ____  ___      .__                          
+ \______   \ ____   ____  ____   ____ \   \/  /_____ |  |   ___________  ___________ 
+  |       _// __ \_/ ___\/  _ \ /    \ \     /\____ \|  |  /  _ \_  __ \_/ __ \_  __ \
+  |    |   \  ___/\  \__(  <_> )   |  \/     \|  |_> >  |_(  <_> )  | \/\  ___/|  | \/
+  |____|_  /\___  >\___  >____/|___|  /___/\  \  __/|____/\____/|__|    \___  >__|   
+         \/     \/     \/           \/      \_/__|                          \/       
+"""
+
+def strip_ansi(text):
+    return re.sub(r'\x1B\[[0-?]*[ -/]*[@-~]', '', text)
+
+def center_text(text: str) -> str:
+    try: width = os.get_terminal_size().columns
+    except OSError: width = 80
+    lines = text.splitlines()
+    if not lines: return ""
+    max_len = max(len(strip_ansi(line)) for line in lines)
+    centered_lines = []
+    for line in lines:
+        padding = max((width - max_len) // 2, 0)
+        centered_lines.append(" " * padding + line)
+    return "\n".join(centered_lines)
+
+def animated_logo_infinite(stop_event):
+    press_text = "Press ENTER to start"
+    while not stop_event.is_set():
+        os.system('cls' if os.name == 'nt' else 'clear')
+        try: term_height = os.get_terminal_size().lines
+        except: term_height = 24
+        padding_top = max((term_height - 12) // 2, 0)
+        print("\n" * padding_top)
+        print(Colorate.Color(Colors.purple, center_text(logo), True))
+        print("\n" + center_text(Colorate.Color(Colors.white, press_text, True)))
+        time.sleep(0.5)
+        if stop_event.is_set(): break
+
+def display_menu():
+    os.system('cls' if os.name == 'nt' else 'clear')
+    start = current_page * items_per_page
+    page_tools = TOOLS[start:start + items_per_page]
+    print(Colorate.Color(Colors.purple, center_text(logo), True))
+    devs = f"Developers: @6AM & @7AM | discord.gg/brifr | Page {current_page + 1}/2"
+    print(center_text(f"{Colors.white}{devs}{Colors.reset}"))
+    print("\n")
+    grid_lines = []
+    for i in range(5):
+        row_parts = []
+        for j in range(3):
+            idx_in_page = i + (j * 5)
+            if idx_in_page < len(page_tools):
+                global_idx = start + idx_in_page
+                name = page_tools[idx_in_page][0]
+                num = f"{global_idx + 1:02}"
+                item = f"{Colors.purple}[{num}]{Colors.reset} {name:<20}"
+                row_parts.append(item)
+        if row_parts: grid_lines.append("   ".join(row_parts))
+    print(center_text("\n".join(grid_lines)))
+    nav = "[<] Previous  |  [>] Next  |  [quit] Quit"
+    print("\n" + center_text(f"{Colors.purple}{nav}{Colors.reset}"))
+
+def execute_tool(choice):
+    try:
+        choice_num = int(choice.strip())
+        index = choice_num - 1
+        if 0 <= index < len(TOOLS):
+            name, tool_file = TOOLS[index]
+            path = os.path.join("utils", f"{tool_file}.py")
+            if os.path.exists(path):
+                os.system('cls' if os.name == 'nt' else 'clear')
+                print(Colorate.Color(Colors.purple, f"\n [!] Starting: {name}...", True))
+                subprocess.run([sys.executable, path])
+                print(f"\n{Colors.purple}Press ENTER to return...{Colors.reset}")
+                input()
+            else:
+                print(f"\n {Colors.red}[!] File not found: utils/{tool_file}.py{Colors.reset}")
+                time.sleep(2)
+    except: pass
+
 def main():
+    global current_page
+    System.Title("ReconXplorer V2 - Made by @6AM & @7AM")
+    Cursor.HideCursor()
+    stop_event = threading.Event()
+    t = threading.Thread(target=animated_logo_infinite, args=(stop_event,), daemon=True)
+    t.start()
+    input() 
+    stop_event.set()
+    t.join()
+    Cursor.ShowCursor()
     while True:
         display_menu()
-        choice = prompt_input("")
-
-        if choice.lower() == 'quit':
-            print("Exiting...")
-            break
-
-        try:
-            choice = int(choice)
-            if 1 <= choice <= len(handles) - 1:
-                handle = handles[choice]
-                handle()
-            else:
-                print("Invalid option, please select again.")
-        except (ValueError, IndexError):
-            print("Invalid input. Please enter a number corresponding to a menu option.")
-
-        input("\nPress Enter to return to the menu...")
+        pc_name = socket.gethostname()
+        prompt = f"\n {Colors.purple}┌───({Colors.white}{pc_name}@ReconXplorer{Colors.purple})\n └─> {Colors.reset}"
+        choice = input(prompt).lower()
+        if choice == "quit": break
+        elif choice in [">", "next"]: current_page = (current_page + 1) % 2
+        elif choice in ["<", "back"]: current_page = (current_page - 1) % 2
+        else: execute_tool(choice)
 
 if __name__ == "__main__":
     main()
